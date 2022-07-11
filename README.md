@@ -1,9 +1,10 @@
 # dgram-ping
 
 Very simple ICMP echo with no privilege.
+
 Currently supports Linux only.
 
-## example
+## Example
 
 ```
 $ cat /proc/sys/net/ipv4/ping_group_range
@@ -18,6 +19,17 @@ $ cargo run --example=ping -- 127.0.0.1
 127.0.0.1: 0 ms
 ^C
 $
+```
+
+## Snippet
+
+```rust
+use dgram_ping::Pinger;
+
+...
+
+    let mut pinger = Pinger::open("127.0.0.1")?;
+    pinger.ping().await?
 ```
 
 ## License
